@@ -2,6 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Lexend";
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  src: url("/font/lexend.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  src: url("/font/inter-roman-latin-var.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+  src: url("/font/inter-italic-latin-var.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  src: url("/font/source-code-pro-roman-var.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+  src: url("/font/source-code-pro-italic-var.woff2") format("woff2");
+}
+
 html,
 body {
   @apply bg-white dark:bg-gray-950;
@@ -9,4 +49,21 @@ body {
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+
+@layer base {
+  [inert] ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+._no-triangle::-webkit-details-marker {
+  display: none;
+  &::-webkit-details-marker {
+    list-style-type: none;
+  }
+}
+
+.dark {
+  color-scheme: dark;
 }
