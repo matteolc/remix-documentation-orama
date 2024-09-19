@@ -1,47 +1,57 @@
-# Welcome to Remix + Cloudflare!
+# Documentation Website
 
-- 📖 [Remix docs](https://remix.run/docs)
-- 📖 [Remix Cloudflare docs](https://remix.run/guides/vite#cloudflare)
+## Contributing
 
-## Development
+If you want to make a contribution
 
-Run the dev server:
+- [Fork and clone](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repo
+- Create a branch
+- Push any changes you make to your branch
+- Open up a PR in this Repo
+
+## Setup
+
+First setup your `.env` file, use `.env.example` to know what to set.
+
+```sh
+cp .env.example .env
+```
+
+Install dependencies
+
+```sh
+npm i
+```
+
+## Local Development
+
+Now you should be good to go:
 
 ```sh
 npm run dev
 ```
 
-To run Wrangler:
+We leverage a number of LRUCache's to server-side cache various resources, such as processed markdown from GitHub, that expire at various times (usually after 5 minutes). If you want them to expire immediately for local development, set the `NO_CACHE` environment variable.
 
 ```sh
-npm run build
-npm run start
+NO_CACHE=1 npm run dev
 ```
 
-## Typegen
-
-Generate types for your Cloudflare bindings in `wrangler.toml`:
-
-```sh
-npm run typegen
-```
-
-You will need to rerun typegen whenever you make changes to `wrangler.toml`.
+## Preview
 
 ## Deployment
 
-First, build your app for production:
+The production server is always in sync with `main`
 
 ```sh
-npm run build
+git push origin main
+open https://your-documentation-website.com
 ```
 
-Then, deploy your app to Cloudflare Pages:
+## Content
 
-```sh
-npm run deploy
-```
+## Orama Search
 
-## Styling
+We use [Orama](https://oramasearch.com/) by Orama for our documentation's search. The site is automatically scraped and indexed weekly by Orama.
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+If the doc search results ever seem outdated or incorrect be sure to check that the crawler isn't blocked. If it is, it might just need to be canceled and restarted to kick things off again. There is also an editor in the Crawler admin that lets you adjust the crawler's script if needed.
