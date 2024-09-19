@@ -12,7 +12,10 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
+    "@epic-web/client-hints": "^1.3.3",
     "@headlessui/react": "^2.1.8",
+    "@headlessui/tailwindcss": "^0.2.1",
+    "@heroicons/react": "^2.1.5",
     "@orama/searchbox": "^1.0.0-rc53",
     "@remix-run/node": "^2.12.0",
     "@remix-run/react": "^2.12.0",

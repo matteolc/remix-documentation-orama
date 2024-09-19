@@ -58,7 +58,7 @@ export function TableOfContents({ doc }: { doc: SerializeFrom<Doc> }) {
       <nav aria-labelledby="on-this-page-title">
         {doc.headings.length > 0 && (
           <>
-            <div className="mb-3 flex items-center font-semibold">
+            <div className="mb-3 flex items-center font-semibold text-black dark:text-slate-300">
               On this page
             </div>
             <ul className="md-toc flex flex-col flex-wrap gap-1 leading-[1.125]">

@@ -11,15 +11,13 @@ import type { LinksFunction } from "@remix-run/node";
 import "./tailwind.css";
 import { useNonce } from "./hooks/use-nonce";
 import { json, LoaderFunctionArgs } from "@remix-run/node";
-// import {
-//   ColorSchemeScript,
-//   parseColorScheme,
-//   useColorScheme,
-// } from "./modules/color-scheme";
 import { CACHE_CONTROL } from "./routes/_docs+/docs.$ref.$";
 import iconsHref from "~/icons.svg";
 import clsx from "clsx";
 import { GlobalLoading } from "./ui/global-loading";
+import { getHints } from "./hooks/use-hints";
+import { getTheme, useTheme } from "./hooks/use-theme";
+import { getDomainUrl } from "./modules/get-domain-url";
 
 export const links: LinksFunction = () => [
   { rel: "icon", href: "/favicon-32.png", sizes: "32x32" },
@@ -27,14 +25,18 @@ export const links: LinksFunction = () => [
   { rel: "icon", href: "/favicon-180.png", sizes: "180x180" },
   { rel: "icon", href: "/favicon-192.png", sizes: "192x192" },
   { rel: "apple-touch-icon", href: "/favicon-180.png", sizes: "180x180" },
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
 ];
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  // const colorScheme = await parseColorScheme(request);
-
   return json(
-    { colorScheme: "dark" },
+    {
+      requestInfo: {
+        hints: getHints(request),
+        origin: getDomainUrl(request),
+        path: new URL(request.url).pathname,
+        userPrefs: { theme: getTheme(request) },
+      },
+    },
     {
       headers: {
         "Cache-Control": CACHE_CONTROL.doc,
@@ -46,19 +48,15 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const nonce = useNonce();
-  // const colorScheme = useColorScheme();
+  const theme = useTheme();
   return (
     <html
       lang="en"
-      className={clsx(
-        // colorScheme === "dark" ? "dark" : "",
-        "dark scroll-pt-[6rem] lg:scroll-pt-[4rem]"
-      )}
+      className={clsx(theme, "scroll-pt-[6rem] lg:scroll-pt-[4rem]")}
     >
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* <ColorSchemeScript /> */}
         <Meta />
         <Links />
       </head>

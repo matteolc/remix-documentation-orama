@@ -1,4 +1,3 @@
-import typographyPlugin from "@tailwindcss/typography";
 import defaultTheme from "tailwindcss/defaultTheme";
 import type { Config } from "tailwindcss";
 
@@ -146,5 +145,8 @@ export default {
       },
     },
   },
-  plugins: [typographyPlugin],
+  plugins: [
+    require("@headlessui/tailwindcss"),
+    require("@tailwindcss/typography"),
+  ],
 } satisfies Config;

@@ -30,6 +30,7 @@ import { SearchBoxParams } from "~/modules/orama/index.client";
 import oramaCss from "@orama/searchbox/dist/index.css?url";
 import docsStylesheet from "~/docs.css?url";
 import prismStylesheet from "~/prism.css?url";
+import { ThemeSwitcher } from "~/ui/theme-switcher";
 
 export const unstable_shouldReload = () => false;
 
@@ -104,6 +105,9 @@ export default function DocsLayout() {
               <div className="absolute bottom-0 right-0 top-16 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block" />
               <div className="absolute bottom-0 right-0 top-28 hidden w-px bg-slate-800 dark:block" />
               <div className="sticky top-[4.75rem] -ml-0.5 h-[calc(100vh-4.75rem)] w-64 overflow-y-auto overflow-x-hidden py-16 pl-0.5 pr-8 xl:w-72 xl:pr-16">
+                <div className="mb-12">
+                  <ThemeSwitcher />
+                </div>
                 <Navigation />
               </div>
             </div>

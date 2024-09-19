@@ -45,19 +45,23 @@ export function Header() {
       <div className="mr-6 flex lg:hidden">
         <MobileNavigation />
       </div>
-      <div className="relative flex flex-grow basis-0 items-center">
-        <Link to="/" aria-label="Home page">
-          <Logomark className="h-9 w-9 lg:hidden" />
-          <Logo className="hidden h-9 w-auto fill-slate-700 lg:block dark:fill-sky-100" />
-        </Link>
-      </div>
-      <div className="relative flex flex-grow basis-0 items-center">
-        <SearchButton {...SearchButtonParams} />
-      </div>
-      <div className="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
-        <Link to="https://github.com" className="group" aria-label="GitHub">
-          <GitHubIcon className="h-6 w-6 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300" />
-        </Link>
+      <div className="relative z-20 flex w-full items-center justify-between">
+        <div className="relative flex flex-grow basis-0 items-center">
+          <Link to="/" aria-label="Home page">
+            <Logomark className="h-9 w-9 lg:hidden" />
+            <Logo className="hidden h-9 w-auto fill-slate-700 lg:block dark:fill-sky-100" />
+          </Link>
+        </div>
+        <div className="relative flex flex-grow basis-0 items-center">
+          <SearchButton {...SearchButtonParams} />
+        </div>
+        <div className="relative flex flex-grow basis-0 items-center">
+          <div className="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
+            <Link to="https://github.com" className="group" aria-label="GitHub">
+              <GitHubIcon className="h-6 w-6 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300" />
+            </Link>
+          </div>
+        </div>
       </div>
     </header>
   );
