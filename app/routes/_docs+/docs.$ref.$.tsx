@@ -44,7 +44,7 @@ export default function Screen() {
   const ref = useRef<HTMLDivElement>(null);
   const params = useParams();
   const pathname = useLocation().pathname;
-  const isDocsIndex = pathname === `/docs/${params.ref}/index`;
+  const isDocsIndex = pathname === `/docs/${params.ref}`;
   useDelegatedReactRouterLinks(ref);
   return (
     <div className="xl:flex xl:w-full xl:justify-between xl:gap-8">

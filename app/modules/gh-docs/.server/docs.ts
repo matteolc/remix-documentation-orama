@@ -28,7 +28,7 @@ export interface Doc extends Omit<MenuDoc, "hasContent"> {
   headings: {
     headingLevel: string;
     html: string | null;
-    slug: string | undefined;
+    slug?: string | undefined;
   }[];
 }
 

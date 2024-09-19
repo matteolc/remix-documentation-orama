@@ -29,11 +29,13 @@ import { SearchBox } from "@orama/searchbox";
 import { SearchBoxParams } from "~/modules/orama/index.client";
 import oramaCss from "@orama/searchbox/dist/index.css?url";
 import docsStylesheet from "~/docs.css?url";
+import prismStylesheet from "~/prism.css?url";
 
 export const unstable_shouldReload = () => false;
 
 export const links: LinksFunction = () => {
   return [
+    { rel: "stylesheet", href: prismStylesheet },
     { rel: "stylesheet", href: oramaCss },
     { rel: "stylesheet", href: docsStylesheet },
   ];
@@ -86,7 +88,7 @@ export default function DocsLayout() {
   const navigation = useNavigation();
   const navigating = navigation.location && !navigation.formData;
   const pathname = useLocation().pathname;
-  const isDocsIndex = pathname === `/docs/${params.ref}/index`;
+  const isDocsIndex = pathname === `/docs/${params.ref}`;
 
   return (
     <MenuContext.Provider value={menu}>

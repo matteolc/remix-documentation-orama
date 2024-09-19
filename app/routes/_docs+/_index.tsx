@@ -1,10 +1,4 @@
-import { LinksFunction } from "@remix-run/node";
 import type { MetaFunction } from "@remix-run/node";
-import prismStylesheet from "~/prism.css?url";
-
-export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: prismStylesheet }];
-};
 
 export const meta: MetaFunction = () => {
   return [
@@ -44,7 +38,7 @@ export default function Index() {
                 <a
                   className="group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500"
                   href={href}
-                  target="_blank"
+                  target="_self"
                   rel="noreferrer"
                 >
                   {icon}
@@ -61,7 +55,7 @@ export default function Index() {
 
 const resources = [
   {
-    href: "https://remix.run/start/quickstart",
+    href: "docs/main/start/quickstart",
     text: "Quick Start (5 min)",
     icon: (
       <svg
@@ -82,7 +76,7 @@ const resources = [
     ),
   },
   {
-    href: "https://remix.run/start/tutorial",
+    href: "docs/main/start/tutorial",
     text: "Tutorial (30 min)",
     icon: (
       <svg
@@ -103,7 +97,7 @@ const resources = [
     ),
   },
   {
-    href: "https://remix.run/docs",
+    href: "docs",
     text: "Remix Docs",
     icon: (
       <svg
