@@ -13,9 +13,10 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.1.8",
+    "@orama/searchbox": "^1.0.0-rc53",
     "@remix-run/node": "^2.12.0",
-    "@remix-run/serve": "^2.12.0",
     "@remix-run/react": "^2.12.0",
+    "@remix-run/serve": "^2.12.0",
     "@tailwindcss/typography": "^0.5.15",
     "cheerio": "^1.0.0-rc.12",
     "clsx": "^2.1.1",

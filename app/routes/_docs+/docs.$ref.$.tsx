@@ -1,9 +1,4 @@
-import {
-  json,
-  LinksFunction,
-  LoaderFunctionArgs,
-  SerializeFrom,
-} from "@remix-run/node";
+import { json, LoaderFunctionArgs, SerializeFrom } from "@remix-run/node";
 import {
   isRouteErrorResponse,
   Link,
@@ -16,14 +11,9 @@ import { useRef } from "react";
 import invariant from "tiny-invariant";
 import iconsHref from "~/icons.svg";
 import { Doc, getRepoDoc } from "~/modules/gh-docs/.server";
-import docsStylesheet from "~/docs.css?url";
 import { useDelegatedReactRouterLinks } from "~/hooks/use-delegated-react-router-links";
 import { PrevNextLinks } from "~/components/PrevNextLinks";
 import { TableOfContents } from "~/components/TableOfContents";
-
-export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: docsStylesheet }];
-};
 
 export const CACHE_CONTROL = {
   /**

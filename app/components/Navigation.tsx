@@ -17,11 +17,11 @@ export function Navigation({
     <nav className={clsx("text-base lg:text-sm", className)}>
       <ul className="space-y-9">
         {menu?.map((section) => (
-          <li key={section.attrs.title}>
+          <div key={section.attrs.title}>
             <h2 className="font-display font-medium text-slate-900 dark:text-white">
               {section.attrs.title}
             </h2>
-            <ul className="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200 dark:border-slate-800">
+            <div className="mt-2 space-y-2 border-l-2 border-slate-100 lg:mt-4 lg:space-y-4 lg:border-slate-200 dark:border-slate-800">
               {section.children.map((link) => (
                 <li key={link.slug} className="relative">
                   <Link
@@ -39,8 +39,8 @@ export function Navigation({
                   </Link>
                 </li>
               ))}
-            </ul>
-          </li>
+            </div>
+          </div>
         ))}
       </ul>
     </nav>

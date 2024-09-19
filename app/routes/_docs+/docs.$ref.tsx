@@ -1,4 +1,9 @@
-import { json, LoaderFunctionArgs, redirect } from "@remix-run/node";
+import {
+  json,
+  LinksFunction,
+  LoaderFunctionArgs,
+  redirect,
+} from "@remix-run/node";
 import {
   Outlet,
   useLoaderData,
@@ -20,8 +25,19 @@ import {
 } from "~/modules/gh-docs/.server";
 import { MenuDoc } from "~/modules/gh-docs/.server/docs";
 import { getLatestVersion } from "~/modules/gh-docs/.server/tags";
+import { SearchBox } from "@orama/searchbox";
+import { SearchBoxParams } from "~/modules/orama/index.client";
+import oramaCss from "@orama/searchbox/dist/index.css?url";
+import docsStylesheet from "~/docs.css?url";
 
 export const unstable_shouldReload = () => false;
+
+export const links: LinksFunction = () => {
+  return [
+    { rel: "stylesheet", href: oramaCss },
+    { rel: "stylesheet", href: docsStylesheet },
+  ];
+};
 
 const MenuContext = createContext<undefined | MenuDoc[]>(undefined);
 
@@ -106,6 +122,7 @@ export default function DocsLayout() {
           </div>
         </div>
       </div>
+      <SearchBox {...SearchBoxParams} />
     </MenuContext.Provider>
   );
 }

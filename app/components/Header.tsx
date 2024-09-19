@@ -5,6 +5,8 @@ import clsx from "clsx";
 import { Logo, Logomark } from "./Logo";
 import { MobileNavigation } from "./MobileNavigation";
 import { Link } from "@remix-run/react";
+import { SearchButton } from "@orama/searchbox";
+import { SearchButtonParams } from "~/modules/orama/index.client";
 
 function GitHubIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -48,6 +50,9 @@ export function Header() {
           <Logomark className="h-9 w-9 lg:hidden" />
           <Logo className="hidden h-9 w-auto fill-slate-700 lg:block dark:fill-sky-100" />
         </Link>
+      </div>
+      <div className="relative flex flex-grow basis-0 items-center">
+        <SearchButton {...SearchButtonParams} />
       </div>
       <div className="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
         <Link to="https://github.com" className="group" aria-label="GitHub">
