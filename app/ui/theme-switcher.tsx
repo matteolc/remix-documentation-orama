@@ -33,7 +33,8 @@ function ThemeSwitcher({ userPreference }: { userPreference?: Theme | null }) {
         fetcherKey: "theme-fetcher",
       }
     );
-  }, [mode, submit, theme]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [theme]);
 
   return (
     <div
