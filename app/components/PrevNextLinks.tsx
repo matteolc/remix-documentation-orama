@@ -30,6 +30,7 @@ function PageLink({
   className?: string;
   dir?: "previous" | "next";
 }) {
+  const { lang = "en" } = useParams();
   return (
     <div className={className}>
       <dt className="font-display text-sm font-medium text-slate-900 dark:text-white">
@@ -37,7 +38,7 @@ function PageLink({
       </dt>
       <dd className="mt-1">
         <Link
-          to={`/docs/en/${branch}/${slug}`}
+          to={`/docs/${lang}/${branch}/${slug}`}
           className={clsx(
             "flex items-center gap-x-1 text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300",
             dir === "previous" && "flex-row-reverse"

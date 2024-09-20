@@ -7,6 +7,8 @@ import { MobileNavigation } from "./MobileNavigation";
 import { Link } from "@remix-run/react";
 import { SearchButton } from "@orama/searchbox";
 import { SearchButtonParams } from "~/modules/orama/index.client";
+import { ThemeSwitcherVercel } from "~/ui/theme-switcher";
+import { useTheme } from "~/hooks/use-theme";
 
 function GitHubIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -17,6 +19,7 @@ function GitHubIcon(props: React.ComponentPropsWithoutRef<"svg">) {
 }
 
 export function Header() {
+  const theme = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -45,23 +48,26 @@ export function Header() {
       <div className="mr-6 flex lg:hidden">
         <MobileNavigation />
       </div>
-      <div className="relative z-20 flex w-full items-center justify-between">
-        <div className="relative flex flex-grow basis-0 items-center">
-          <Link to="/" aria-label="Home page">
-            <Logomark className="h-9 w-9 lg:hidden" />
-            <Logo className="hidden h-9 w-auto fill-slate-700 lg:block dark:fill-sky-100" />
-          </Link>
+      <div className="relative flex flex-grow basis-0 items-center">
+        <Link to="/" aria-label="Home page">
+          <Logomark className="h-9 w-9 lg:hidden" />
+          <Logo className="hidden h-9 w-auto fill-slate-700 lg:block dark:fill-sky-100" />
+        </Link>
+      </div>
+      <div className="-my-5 mr-6 sm:mr-8 md:mr-0 md:w-96">
+        <div className="relative z-20">
+          <SearchButton {...SearchButtonParams} colorScheme={theme} />
         </div>
-        <div className="relative flex flex-grow basis-0 items-center">
-          <SearchButton {...SearchButtonParams} />
-        </div>
-        <div className="relative flex flex-grow basis-0 items-center">
-          <div className="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
-            <Link to="https://github.com" className="group" aria-label="GitHub">
-              <GitHubIcon className="h-6 w-6 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300" />
-            </Link>
-          </div>
-        </div>
+      </div>
+      <div className="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
+        <ThemeSwitcherVercel userPreference={theme} />
+        <Link
+          to="https://github.com"
+          className="group relative mt-1"
+          aria-label="GitHub"
+        >
+          <GitHubIcon className="h-6 w-6 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300" />
+        </Link>
       </div>
     </header>
   );
