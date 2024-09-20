@@ -15,6 +15,20 @@ export function getLatestVersion(tags: string[]) {
     semver.satisfies(tag, "*", { includePrerelease: false })
   )[0];
 }
+/**
+ * Returns the latest version of each major version
+ */
+export function getLatestVersionHeads(tags: string[]) {
+  const heads = new Map<number /*major*/, string /*head*/>();
+  for (const tag of tags) {
+    const major = semver.major(tag);
+    const head = heads.get(major);
+    if (!head || semver.gt(tag, head)) {
+      heads.set(major, tag);
+    }
+  }
+  return Array.from(heads.values()).sort(semver.compare).reverse();
+}
 
 declare global {
   // eslint-disable-next-line no-var
@@ -23,7 +37,7 @@ declare global {
 
 // global for SS "HMR", we need a better story here
 global.tagsCache ??= new LRUCache<string, string[]>({
-  // let tagsCache = new LRUCache<string, string[]>({
+  // const tagsCache = new LRUCache<string, string[]>({
   max: 3,
   ttl: 1000 * 60 * 5, // 5 minutes, so we can see new tags quickly
   allowStale: true,

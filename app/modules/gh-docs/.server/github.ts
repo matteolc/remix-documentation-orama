@@ -1,9 +1,7 @@
 import { Octokit } from "octokit";
-import invariant from "tiny-invariant";
 
 const { GH_TOKEN } = process.env;
-invariant(GH_TOKEN, "expected GH_TOKEN");
 
-const octokit = new Octokit();
+const octokit = new Octokit(GH_TOKEN ? { auth: GH_TOKEN } : undefined);
 
 export { octokit };
