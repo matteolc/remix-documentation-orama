@@ -17,7 +17,7 @@ import clsx from "clsx";
 import { GlobalLoading } from "./ui/global-loading";
 import { getHints } from "./hooks/use-hints";
 import { getTheme, useTheme } from "./hooks/use-theme";
-import { getDomainUrl } from "./modules/get-domain-url";
+import { getDomainUrl } from "./lib/get-domain-url";
 
 export const links: LinksFunction = () => [
   { rel: "icon", href: "/favicon-32.png", sizes: "32x32" },

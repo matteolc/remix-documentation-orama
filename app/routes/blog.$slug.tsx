@@ -5,7 +5,7 @@ import { BlogComments } from "~/components/blog/BlogComments";
 import { BlogContent } from "~/components/blog/BlogContent";
 import { CommentsSkeleton } from "~/components/blog/CommentsSkeleton";
 import { Header } from "~/components/blog/Header";
-import { fetchBlogData, fetchComments } from "~/services/blog.server";
+import { fetchBlogData, fetchComments } from "~/modules/blog.server";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const { slug } = params;
