@@ -37,7 +37,7 @@ function PageLink({
       </dt>
       <dd className="mt-1">
         <Link
-          to={`/docs/${branch}/${slug}`}
+          to={`/docs/en/${branch}/${slug}`}
           className={clsx(
             "flex items-center gap-x-1 text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300",
             dir === "previous" && "flex-row-reverse"
@@ -58,13 +58,13 @@ function PageLink({
 
 export function PrevNextLinks() {
   const pathname = useLocation().pathname;
-  const { ref: branch } = useParams();
+  const { lang = "en", ref: branch } = useParams();
   invariant(branch, "Ref must be provided");
   const menu = useOutletContext<MenuDoc[]>();
   invariant(menu, "Menu context must be provided");
   const allLinks = menu.flatMap((section) => section.children);
   const linkIndex = allLinks.findIndex(
-    (link) => `/docs/${branch}/${link.slug}` === pathname
+    (link) => `/docs/${lang}/${branch}/${link.slug}` === pathname
   );
   const previousPage = linkIndex > -1 ? allLinks[linkIndex - 1] : null;
   const nextPage = linkIndex > -1 ? allLinks[linkIndex + 1] : null;

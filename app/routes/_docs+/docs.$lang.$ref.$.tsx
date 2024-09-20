@@ -58,7 +58,7 @@ export default function Screen() {
       )}
 
       <div className="min-w-0 px-4 pt-12 xl:mr-4 xl:flex-grow xl:pl-0 xl:pt-20">
-        <div ref={ref} className="markdown w-full max-w-3xl pb-8">
+        <div ref={ref} className="markdown w-full max-w-3xl pb-16">
           <article>
             <div
               className="md-prose pb-[33vh]"
