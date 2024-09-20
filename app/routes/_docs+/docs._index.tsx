@@ -1,5 +1,5 @@
 import { redirect } from "@remix-run/node";
 
 export async function loader() {
-  return redirect("/docs/main", { status: 301 });
+  return redirect("/docs/en/main", { status: 301 });
 }

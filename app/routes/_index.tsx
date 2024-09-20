@@ -55,7 +55,7 @@ export default function Index() {
 
 const resources = [
   {
-    href: "docs/main/start/quickstart",
+    href: "docs/en/main/start/quickstart",
     text: "Quick Start (5 min)",
     icon: (
       <svg
@@ -76,7 +76,7 @@ const resources = [
     ),
   },
   {
-    href: "docs/main/start/tutorial",
+    href: "docs/en/main/start/tutorial",
     text: "Tutorial (30 min)",
     icon: (
       <svg
@@ -97,7 +97,7 @@ const resources = [
     ),
   },
   {
-    href: "docs",
+    href: "docs/en",
     text: "Remix Docs",
     icon: (
       <svg

@@ -10,7 +10,7 @@
     "format": "prettier --write ./",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "start": "remix-serve ./build/server/index.js",
+    "start": "cross-env dotenv remix-serve ./build/server/index.js",
     "typecheck": "tsc -b"
   },
   "dependencies": {
@@ -25,6 +25,8 @@
     "@tailwindcss/typography": "^0.5.15",
     "cheerio": "^1.0.0-rc.12",
     "clsx": "^2.1.1",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
     "escape-goat": "^4.0.0",
     "follow-redirects": "^1.15.9",
     "front-matter": "^4.0.2",

@@ -11,7 +11,7 @@ import type { LinksFunction } from "@remix-run/node";
 import "./tailwind.css";
 import { useNonce } from "./hooks/use-nonce";
 import { json, LoaderFunctionArgs } from "@remix-run/node";
-import { CACHE_CONTROL } from "./routes/_docs+/docs.$ref.$";
+import { CACHE_CONTROL } from "./routes/_docs+/docs.$lang.$ref.$";
 import iconsHref from "~/icons.svg";
 import clsx from "clsx";
 import { GlobalLoading } from "./ui/global-loading";

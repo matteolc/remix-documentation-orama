@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 import { Link } from "@remix-run/react";
-import { useMenuContext } from "~/routes/_docs+/docs.$ref";
+import { useMenuContext } from "~/routes/_docs+/docs.$lang.$ref";
 import { useIsActivePath } from "~/hooks/use-is-active-path";
 
 export function Navigation({

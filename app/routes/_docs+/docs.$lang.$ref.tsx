@@ -50,10 +50,7 @@ export const useMenuContext = () => {
 };
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
-  const { ref, "*": splat } = params;
-  const lang = "en";
-
-  invariant(lang, "expected `params.lang`");
+  const { lang = "en", ref = "main", "*": splat } = params;
   invariant(ref, "expected `params.ref`");
 
   const branchesInMenu = ["main", "dev"];
@@ -64,8 +61,17 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   if (!tags || !branches)
     throw new Response("Cannot reach GitHub", { status: 503 });
 
-  const betterUrl = validateParams(tags, branches, { lang, ref, "*": splat });
-  if (betterUrl) throw redirect("/" + betterUrl);
+  if (process.env.NODE_ENV === "development") {
+    branches.push("local");
+    branchesInMenu.push("local");
+  }
+
+  const betterUrl = validateParams(tags, branches, {
+    lang,
+    ref,
+    "*": splat,
+  });
+  if (betterUrl) throw redirect("/docs/" + betterUrl);
 
   const menu = await getRepoDocsMenu(ref, lang);
   const releaseBranch = "main";
@@ -91,7 +97,7 @@ export default function DocsLayout() {
   const navigation = useNavigation();
   const navigating = navigation.location && !navigation.formData;
   const pathname = useLocation().pathname;
-  const isDocsIndex = pathname === `/docs/${params.ref}`;
+  const isDocsIndex = pathname === `/docs/${params.lang}/${params.ref}`;
 
   return (
     <MenuContext.Provider value={menu}>
